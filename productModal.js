@@ -1,21 +1,21 @@
 
 export default {
-    props:['addNew','newProduct','updateProduct','addImagesUrl'],
+    props:['addNew','newProduct','updateProduct','addImagesUrl','addNewProduct'],
     data(){
       return{
-        productModal: null
+        modalProduct: null
       }
     },
     methods:{
       openModal(){
-        this.productModal.show();
+        this.modalProduct.show();
       },
       closeModal(){
-        this.productModal.hide();
+        this.modalProduct.hide();
       }
     },
     template:
-    `<div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
+    `<div id="productModalabc" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-xl">
       <div class="modal-content border-0">
@@ -29,9 +29,9 @@ export default {
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4">
-                 <div class="mb-3" v-for="(img, index) in newProduct.imagesUrl" :key="index">
-                    <label :for="'imageUrl' + index" class="form-label">主要圖片</label>
-                    <input :id="'imageUrl' + index" v-model.lazy="newProduct.imageUrl" type="text" class="form-control mb-2" placeholder="請輸入圖片連結">
+                 <div class="mb-3">
+                    <label for="imageUrl" class="form-label">主要圖片</label>
+                    <input id="imageUrl" v-model.lazy="newProduct.imageUrl" type="text" class="form-control mb-2" placeholder="請輸入主要圖片連結">
                     <img style="max-width: 280px; max-height: 280px;" class="img-fluid" :src="newProduct.imageUrl">
                 </div>
               <hr>
@@ -47,7 +47,7 @@ export default {
                 <div >
                   <button class="btn btn-outline-primary btn-sm d-block w-100"
                     @click="newProduct.imagesUrl.push('')">
-                    新增圖片
+                    新增其他圖片
                   </button>
                 </div>
                 <div>
@@ -120,16 +120,24 @@ export default {
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="updateProduct">
+          <span v-if="addNew">
+            <button type="button" class="btn btn-primary" @click="addNewProduct">
+              確認
+            </button>
+          </span>  
+          <span v-else>
+            <button type="button" class="btn btn-primary" @click="updateProduct">
             確認
           </button>
+          </span>
         </div>
       </div>
     </div>
   </div>`,
     mounted(){
-      this.productModal = new bootstrap.Modal((this.$refs.productModal), {
-        keyboard: false
+      this.modalProduct = new bootstrap.Modal((this.$refs.productModal), {
+        keyboard: false,
+        backdrop: 'static'
       });
     }
 

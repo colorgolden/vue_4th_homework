@@ -75,9 +75,9 @@
         </table>
       </div>
         <!-- Modal -->
-
-      <product_modal :add_new="addNew" :new-product="newProduct" update-product="updateProduct" add-images-url="addImagesUrl" ref="pdModal"></product_modal>
-      <pagination  :pages="pages" :get-products="getProducts"></pagination>
+      <pagination :pages="pages" :get-products="getProducts"></pagination>
+      <product-modal :add-new="addNew" :new-product="newProduct" :update-product="updateProduct":add-new-product="addNewProduct" :add-images-url="addImagesUrl" ref="pdModal"></product_modal>
+      
       
       <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
         aria-labelledby="delProductModalLabel" aria-hidden="true">

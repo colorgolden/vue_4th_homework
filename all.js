@@ -2,12 +2,11 @@
 
 import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
 import pagination from './pagination.js';
-import product_modal from './product_modal.js';
+import productModal from './productModal.js';
 
 const url = 'https://vue3-course-api.hexschool.io'; // 請加入站點
 const path = 'colorgolden'; // 請加入個人 API Path
 
-let productModal = null;
 let delProductModal = null;
 
 const app = {
@@ -155,7 +154,7 @@ const app = {
     },
 
     updateProduct() {
-      // #7 新增單一產品資訊
+      // #7 更新單一產品資訊
       axios.put(`${url}/v2/api/${path}/admin/product/${this.newProduct.id}`,{ data: this.newProduct })
         .then((res) => {
           alert(res.data.message);
@@ -180,7 +179,7 @@ const app = {
   },
   components: {
     pagination,
-    product_modal,
+    productModal,
   }
 }
 
