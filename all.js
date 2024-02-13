@@ -72,7 +72,7 @@ const app = {
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)newToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
       axios.defaults.headers.common['Authorization'] = token;
 
-      if (!window.location.href.includes('admin_login.html')) {  //只要不是在admin_login頁面，就執行大括號內的程式碼
+      if (!window.location.href.includes('index.html')) {  //只要不是在admin_login頁面，就執行大括號內的程式碼
         // #4  確認是否登入
         axios.post(`${url}/v2/api/user/check`, {}, { headers: { 'Authorization': token } })
           .then((res) => {
