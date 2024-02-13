@@ -80,7 +80,7 @@ const app = {
           })
           .catch((error) => {
             alert("尚未登入會員，請重新登入！");
-            window.location.href = 'admin_login.html'; //跳轉到login頁面
+            window.location.href = 'index.html'; //跳轉到login頁面
             console.dir(error);
             return;
           })
